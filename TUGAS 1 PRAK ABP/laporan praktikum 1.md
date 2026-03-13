@@ -54,7 +54,7 @@ Buatlah halaman tersebut semenarik dan seinteraktif mungkin dengan memanfaatkan 
 
 ### Source Code :
 ```html
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="id" data-bs-theme="dark">
 <head>
   <meta charset="UTF-8"/>
@@ -64,7 +64,7 @@ Buatlah halaman tersebut semenarik dan seinteraktif mungkin dengan memanfaatkan 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
   <style>
-    /* ── TOKENS ─────────────────────────────── */
+    /* ─ TOKENS ─ */
     :root {
       --n1: #020812;
       --n2: #060e1f;
@@ -81,14 +81,14 @@ Buatlah halaman tersebut semenarik dan seinteraktif mungkin dengan memanfaatkan 
       --cream: #fde68a;
     }
 
-    /* ── BASE ───────────────────────────────── */
+    /* ─ BASE ─ */
     body              { background-color: var(--n2); font-family: 'Poppins', sans-serif; }
 
-    /* ── FONTS ──────────────────────────────── */
+    /* ─ FONTS ─ */
     .ff-cinzel        { font-family: 'Cinzel', serif; }
     .ff-amiri         { font-family: 'Amiri', serif; }
 
-    /* ── FONT SIZES ─────────────────────────── */
+    /* ─ FONT SIZES ─ */
     .fs-arabic        { font-size: clamp(2rem, 5vw, 3rem); }
     .fs-hero          { font-size: clamp(1.8rem, 4vw, 3rem); }
     .fs-cd            { font-size: clamp(2rem, 5vw, 2.8rem); }
@@ -100,21 +100,21 @@ Buatlah halaman tersebut semenarik dan seinteraktif mungkin dengan memanfaatkan 
     .fs-16            { font-size: 1.6rem; }
     .moon-size        { font-size: 4.5rem; line-height: 1; }
 
-    /* ── LETTER SPACING ─────────────────────── */
+    /* ─ LETTER SPACING ─ */
     .ls-1             { letter-spacing: 1px; }
     .ls-2             { letter-spacing: 2px; }
     .ls-4             { letter-spacing: 4px; }
     .ls-6             { letter-spacing: 6px; }
 
-    /* ── LINE HEIGHT ────────────────────────── */
+    /* ─ LINE HEIGHT ─ */
     .lh-17            { line-height: 1.7; }
     .lh-18            { line-height: 1.8; }
     .lh-20            { line-height: 2.0; }
 
-    /* ── DIRECTION ──────────────────────────── */
+    /* ─ DIRECTION ─ */
     .dir-rtl          { direction: rtl; }
 
-    /* ── COLORS ─────────────────────────────── */
+    /* ─ COLORS ─*/
     .text-accent      { color: var(--accent-lt) !important; }
     .text-accent-dk   { color: var(--accent) !important; }
     .text-gold        { color: var(--gold-lt) !important; }
@@ -124,7 +124,7 @@ Buatlah halaman tersebut semenarik dan seinteraktif mungkin dengan memanfaatkan 
     .text-pale        { color: var(--pale) !important; }
     .text-cream       { color: var(--cream) !important; }
 
-    /* ── BACKGROUNDS ────────────────────────── */
+    /* ─ BACKGROUNDS ─ */
     .bg-n1            { background-color: var(--n1) !important; }
     .bg-n2            { background-color: var(--n2) !important; }
     .bg-n3            { background-color: var(--n3) !important; }
@@ -143,7 +143,7 @@ Buatlah halaman tersebut semenarik dan seinteraktif mungkin dengan memanfaatkan 
     .bg-cd-wrap       { background: rgba(6,14,31,.9); }
     .bg-cd-block      { background: var(--n4); }
 
-    /* ── BORDERS ─────────────────────────────── */
+    /* ─ BORDERS ─ */
     .border-accent    { border-color: var(--accent) !important; }
     .border-accent-50 { border-color: rgba(78,142,247,.5) !important; }
     .border-accent-25 { border-color: rgba(78,142,247,.25) !important; }
@@ -153,7 +153,7 @@ Buatlah halaman tersebut semenarik dan seinteraktif mungkin dengan memanfaatkan 
     .border-b-accent1 { border-bottom: 1px solid rgba(78,142,247,.2); }
     .border-t-card    { border-top: 2px solid rgba(78,142,247,.4) !important; }
 
-    /* ── SHADOWS ─────────────────────────────── */
+    /* ─ SHADOWS ─ */
     .shadow-card      { box-shadow: 0 4px 24px rgba(0,0,0,.5), 0 0 0 1px rgba(78,142,247,.06); }
     .shadow-btn       { box-shadow: 0 8px 32px rgba(78,142,247,.35) !important; }
     .shadow-modal     { box-shadow: 0 24px 64px rgba(0,0,0,.8) !important; }
@@ -162,7 +162,7 @@ Buatlah halaman tersebut semenarik dan seinteraktif mungkin dengan memanfaatkan 
     .shadow-table     { box-shadow: 0 8px 32px rgba(0,0,0,.4); }
     .shadow-keutamaan { box-shadow: 0 4px 20px rgba(0,0,0,.4); }
 
-    /* ── TEXT EFFECTS ────────────────────────── */
+    /* ─ TEXT EFFECTS ─ */
     .glow-accent      { text-shadow: 0 0 30px rgba(78,142,247,.45); }
     .glow-gold        { text-shadow: 0 0 30px rgba(201,162,39,.4); }
     .glow-white       { text-shadow: 0 2px 20px rgba(0,0,0,.6); }
@@ -176,17 +176,17 @@ Buatlah halaman tersebut semenarik dan seinteraktif mungkin dengan memanfaatkan 
     .btn-min          { min-width: 210px; }
     .ornament-line    { max-width: 80px; }
 
-    /* ── HOVER ───────────────────────────────── */
+    /* ─ HOVER ─ */
     .card-hover       { transition: transform .2s ease, box-shadow .2s ease; }
     .card-hover:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(78,142,247,.18), 0 0 0 1px rgba(78,142,247,.25) !important; }
 
-    /* ── TABLE ───────────────────────────────── */
+    /* ─ TABLE ─ */
     .table-navy       { --bs-table-bg: transparent; }
     .table-navy thead { background-color: var(--n4); }
     .table-navy tbody tr { transition: background .15s; }
     .table-navy tbody tr:hover td { background: rgba(78,142,247,.06) !important; }
 
-    /* ── PROGRESS ANIMATION ──────────────────── */
+    /* ─ PROGRESS ANIMATION ─ */
     .bar-animate      { transition: width 1.8s ease-in-out; }
     .bar-reset        { transition: none; }
   </style>
@@ -509,7 +509,7 @@ Buatlah halaman tersebut semenarik dan seinteraktif mungkin dengan memanfaatkan 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-/* ── Countdown ──────────────────────────────── */
+/* ─ Countdown ─ */
 (function () {
   const target = new Date('2026-03-20T00:00:00');
   const pad = n => String(n).padStart(2, '0');
@@ -523,7 +523,7 @@ Buatlah halaman tersebut semenarik dan seinteraktif mungkin dengan memanfaatkan 
   setInterval(tick, 1000); tick();
 })();
 
-/* ── Jadwal ────────────────────────────────── */
+/* ─ Jadwal ─ */
 (function () {
   const rows = [
     ['Imsak',   '04:12'],
@@ -547,7 +547,7 @@ Buatlah halaman tersebut semenarik dan seinteraktif mungkin dengan memanfaatkan 
   });
 })();
 
-/* ── THR Modal ──────────────────────────────── */
+/* ─ THR Modal ─ */
 (function () {
   const modal    = document.getElementById('thrModal');
   const bar      = document.getElementById('thr-progress');
@@ -591,6 +591,7 @@ Buatlah halaman tersebut semenarik dan seinteraktif mungkin dengan memanfaatkan 
 })();
 </script>
 </body>
+
 </html>
 ```
 ### Output:
