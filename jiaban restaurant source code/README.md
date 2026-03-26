@@ -1,6 +1,6 @@
 # 加班 | JIABAN — Premium Cafe Menu Management System
 
-> *Where Seoul's refined elegance meets Shanghai's midnight mystique.*
+> *The Salon Privee*
 
 ---
 
