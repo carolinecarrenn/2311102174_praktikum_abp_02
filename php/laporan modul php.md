@@ -484,10 +484,10 @@ Selain itu, program juga menampilkan:
 - Nama mahasiswa dengan nilai tertinggi
 
 ### Full code Screenshot :
-Tempel screenshot full source code di sini.
+<img width="2048" height="14832" alt="carbon" src="https://github.com/user-attachments/assets/5467814e-4b48-46f1-a22c-882946e5d856" />
 
 ### Screenshot Output :
-Tempel screenshot hasil output program di sini.
+<img width="1919" height="1011" alt="image" src="https://github.com/user-attachments/assets/16063272-f32a-44af-aedf-bc27bfb04dad" />
 
 ## Deskripsi Program
 
