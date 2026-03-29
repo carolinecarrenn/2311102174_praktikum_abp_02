@@ -1,6 +1,6 @@
 # Sistem Penilaian Mahasiswa
 
-> Tugas Pertemuan 3 — Pemrograman Web PHP
+> Caroline Carren | 2311102174
 
 ---
 
@@ -96,10 +96,3 @@ PHP/
 ```
 
 ---
-
-## Identitas Pembuat
-
-| Field | Detail |
-|-------|--------|
-| **Nama** | Caroline Carren |
-| **NIM**  | 2311102174 |
