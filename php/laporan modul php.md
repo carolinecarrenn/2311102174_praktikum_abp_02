@@ -4,7 +4,7 @@
 <br>
 
 <h2 align="center"><strong> MODUL IX </strong></h2>
-<h2 align="center"><strong> HTML </strong></h2> 
+<h2 align="center"><strong> PHP </strong></h2> 
 
 <br>
 
