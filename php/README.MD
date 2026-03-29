@@ -89,8 +89,10 @@ Nilai Akhir = (Tugas × 0.30) + (UTS × 0.35) + (UAS × 0.35)
 ## Struktur File
 
 ```
-sistem-penilaian-mahasiswa/
-└── index.php       # File utama (PHP + HTML + CSS)
+PHP/
+├── index.php
+├── laporan modul php.md
+└── README.md
 ```
 
 ---
