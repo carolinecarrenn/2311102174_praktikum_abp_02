@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Korea Employee Directory</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #FDF6FF;
+      min-height: 100vh;
+      padding: 2rem 1rem 3rem;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 2rem 1rem 1.5rem;
+    }
+    .hero-tag {
+      display: inline-block;
+      background: #FBEAF0;
+      color: #993556;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 14px;
+      border-radius: 20px;
+      letter-spacing: .5px;
+      margin-bottom: 14px;
+    }
+    .hero-title {
+      font-size: 26px;
+      font-weight: 700;
+      color: #2C2C2A;
+      margin-bottom: 6px;
+    }
+    .hero-sub {
+      font-size: 13px;
+      color: #888780;
+    }
+
+    .btn-wrap {
+      display: flex;
+      justify-content: center;
+      margin: 1.5rem 0;
+    }
+    .load-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 32px;
+      background: #D4537E;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .2s, transform .1s;
+    }
+    .load-btn:hover { background: #993556; }
+    .load-btn:active { transform: scale(0.97); }
+    .load-btn:disabled { background: #B4B2A9; cursor: default; }
+
+    .loader-txt {
+      text-align: center;
+      color: #B4B2A9;
+      font-size: 13px;
+      padding: 1rem 0;
+      display: none;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 14px;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .kcard {
+      background: white;
+      border-radius: 20px;
+      padding: 1.25rem;
+      border: 1.5px solid transparent;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity .4s, transform .4s;
+    }
+    .kcard.show { opacity: 1; transform: translateY(0); }
+
+    .kcard-top { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+    .av {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; font-weight: 600;
+      flex-shrink: 0;
+    }
+    .kname { font-size: 15px; font-weight: 700; color: #2C2C2A; margin-bottom: 2px; }
+    .kjob { font-size: 12px; color: #888780; }
+    .kbadge {
+      display: inline-flex; align-items: center; gap: 4px;
+      background: #FDF6FF; border: 1px solid #F4C0D1;
+      color: #993556; font-size: 11px; padding: 2px 10px;
+      border-radius: 20px; margin-bottom: 10px;
+    }
+    .kpill { font-size: 11px; padding: 4px 12px; border-radius: 20px; }
+    .kloc { font-size: 12px; color: #888780; margin-top: 8px; display: flex; align-items: center; gap: 6px; }
+    .dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
+    .divider { height: 1px; background: #F1EFE8; margin: 10px 0; }
+    .detail-txt { margin-top: 10px; font-size: 11px; color: #B4B2A9; }
+    .status-bar { text-align: center; margin-top: 1.5rem; font-size: 12px; color: #B4B2A9; display: none; }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="hero-tag">🇰🇷 Korea Tech Team</div>
+    <h1 class="hero-title">Employee Directory</h1>
+    <p class="hero-sub">Klik tombol untuk mengambil data via AJAX — tanpa reload halaman</p>
+  </div>
+
+  <div class="btn-wrap">
+    <button class="load-btn" id="loadBtn" onclick="loadData()">
+      ▶ Tampilkan Profil
+    </button>
+  </div>
+
+  <div class="loader-txt" id="loader">Mengambil data dari server...</div>
+  <div class="grid" id="hasil-profil"></div>
+  <div class="status-bar" id="statusBar">5 data berhasil dimuat dari data.php ✓</div>
+
+  <script>
+    const THEMES = [
+      { av: 'background:#FBEAF0;color:#993556;border:2px solid #F4C0D1', kc: 'border-color:#F4C0D1;background:#FFFBFC', pill: 'background:#F4C0D1;color:#72243E', dot: 'background:#D4537E' },
+      { av: 'background:#E6F1FB;color:#185FA5;border:2px solid #B5D4F4', kc: 'border-color:#B5D4F4;background:#F7FBFF', pill: 'background:#B5D4F4;color:#0C447C', dot: 'background:#378ADD' },
+      { av: 'background:#E1F5EE;color:#0F6E56;border:2px solid #9FE1CB', kc: 'border-color:#9FE1CB;background:#F5FFFA', pill: 'background:#9FE1CB;color:#085041', dot: 'background:#1D9E75' },
+      { av: 'background:#EEEDFE;color:#3C3489;border:2px solid #CECBF6', kc: 'border-color:#CECBF6;background:#FAFAFF', pill: 'background:#CECBF6;color:#26215C', dot: 'background:#7F77DD' },
+      { av: 'background:#FAEEDA;color:#854F0B;border:2px solid #FAC775', kc: 'border-color:#FAC775;background:#FFFCF5', pill: 'background:#FAC775;color:#412402', dot: 'background:#BA7517' },
+    ];
+
+    let loaded = false;
+
+    function loadData() {
+      if (loaded) return;
+      const btn = document.getElementById('loadBtn');
+      const loader = document.getElementById('loader');
+      const grid = document.getElementById('hasil-profil');
+      const bar = document.getElementById('statusBar');
+
+      btn.disabled = true;
+      btn.textContent = 'Memuat...';
+      loader.style.display = 'block';
+
+      fetch('data.php')
+        .then(res => res.json())
+        .then(data => {
+          loader.style.display = 'none';
+
+          data.forEach((d, i) => {
+            const t = THEMES[i % THEMES.length];
+            const inisial = d.nama.split(' ').map(k => k[0]).join('').slice(0, 2);
+
+            const card = document.createElement('div');
+            card.className = 'kcard';
+            card.style.cssText = t.kc;
+            card.innerHTML = `
+              <div class="kcard-top">
+                <div class="av" style="${t.av}">${inisial}</div>
+                <div>
+                  <div class="kname">${d.nama}</div>
+                  <div class="kjob">${d.pekerjaan}</div>
+                </div>
+              </div>
+              <div class="kbadge">🇰🇷 Korea</div>
+              <div class="divider"></div>
+              <span class="kpill" style="${t.pill}">${d.pekerjaan}</span>
+              <div class="kloc">
+                <span class="dot" style="${t.dot}"></span>
+                ${d.lokasi}, South Korea
+              </div>
+              <div class="detail-txt">
+                Nama: ${d.nama} &nbsp;|&nbsp; Pekerjaan: ${d.pekerjaan} &nbsp;|&nbsp; Lokasi: ${d.lokasi}
+              </div>
+            `;
+            grid.appendChild(card);
+            setTimeout(() => card.classList.add('show'), 100 + i * 100);
+          });
+
+          btn.textContent = '✓ Data Dimuat!';
+          bar.style.display = 'block';
+          loaded = true;
+        })
+        .catch(() => {
+          loader.style.display = 'none';
+          grid.innerHTML = '<p style="color:#E24B4A;text-align:center">Gagal mengambil data dari server.</p>';
+          btn.textContent = 'Tampilkan Profil';
+          btn.disabled = false;
+        });
+    }
+  </script>
+
+</body>
+</html>
