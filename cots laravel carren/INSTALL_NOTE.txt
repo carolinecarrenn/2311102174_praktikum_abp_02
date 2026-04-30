@@ -1,0 +1,47 @@
+INSTALL NOTE - INVENTARI TOKO PAK COKOMI & MAS WOWO
+
+Project ini adalah aplikasi Laravel + Breeze lengkap untuk inventari toko.
+
+FITUR WAJIB YANG SUDAH ADA
+- Login, register, logout memakai Laravel Breeze.
+- Dashboard admin.
+- CRUD produk.
+- Data table produk dengan pencarian.
+- Form create produk.
+- Form edit produk.
+- Modal konfirmasi delete.
+- Database migration untuk produk dan keranjang.
+- Database factory dan seeder.
+- Akun demo dan 150 produk dengan nama serta keterangan yang realistis.
+- Etalase belanja, keranjang, dan checkout sederhana.
+- Dokumentasi di README.md.
+
+AKUN DEMO
+- admin@cokomi.test / password
+- wowo@toko.test / password
+
+PERSYARATAN
+- PHP 8.4 atau lebih baru.
+- Composer.
+- Node.js dan npm.
+- MySQL atau MariaDB.
+
+CARA JALANKAN
+1. composer install
+2. npm install
+3. copy .env.example .env
+4. php artisan key:generate
+5. Buat database, misalnya inventari_toko.
+6. Atur DB_DATABASE, DB_USERNAME, dan DB_PASSWORD di file .env.
+7. php artisan migrate:fresh --seed
+8. npm run build
+9. php artisan serve
+
+URL PENTING
+- Etalase: http://127.0.0.1:8000
+- Login: http://127.0.0.1:8000/login
+- Dashboard: http://127.0.0.1:8000/dashboard
+- Produk admin: http://127.0.0.1:8000/products
+
+CATATAN
+Jika memakai XAMPP bawaan yang masih PHP 8.2, artisan bisa gagal karena dependency project ini membutuhkan PHP lebih baru. Gunakan PHP 8.4+.
