@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "380730360616",
+    "project_id": "abp-praktikum",
+    "storage_bucket": "abp-praktikum.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:380730360616:android:ea2e2996cfe5260add861d",
+        "android_client_info": {
+          "package_name": "com.example.flutter_todolist_fcm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCl0NHl4uwd_x-dexD1mOU6nDUiOykWFo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
